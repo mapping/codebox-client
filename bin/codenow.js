@@ -86,14 +86,14 @@ cli
         'name': boxName,
         'type': boxType,
         'git': this.git,
-        'description': this.description
+        'description': this.label
     }).then(function(box) {
         console.log(box.name, "|", box.url);
     });
 });
 
 cli.option('-g, --git <git url>', 'GIT url for a new box.');
-cli.option('-d, --description <Description Label>', 'Description for a new box.');
+cli.option('-l, --label <Description Label>', 'Description for a new box.');
 
 
 cli.version(pkg.version).parse(process.argv);
