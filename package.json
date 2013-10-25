@@ -1,0 +1,41 @@
+{
+    "author": "FriendCode",
+    "name": "hr.js",
+    "description": "Command line tool for CodeNow (codenow.io).",
+    "version": "0.0.1",
+    "keywords": [
+        "codenow", "dev", "cloud"
+    ],
+    "homepage": "http://codenow.io",
+    "bugs": "https://github.com/FriendCode/codenow/issues",
+    "dependencies": {
+        "commander": "1.1.1",
+        "underscore": "1.4.4",
+        "q": "0.9.6",
+        "cat-settings": "0.9.1"
+    },
+    "engines": {
+        "node": ">=0.8.0",
+        "npm": ">=1.1.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/FriendCode/codenow.git"
+    },
+    "bin": {
+        "codenow": "bin/codenow.js"
+    },
+
+    "contributors": [
+        {
+            "name": "Samy Pesse",
+            "email": "samy.pesse@friendco.de",
+            "url": "http://samypesse.fr"
+        },
+        {
+            "name": "Aaron O'Mullan",
+            "email": "aaron.omullan@friendco.de",
+            "url": "https://friendco.de"
+        }
+    ]
+}
