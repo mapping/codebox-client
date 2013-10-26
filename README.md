@@ -42,7 +42,7 @@ $ codenow auth <your api token>
 Creating boxes is really easy:
 
 ```
-$ codenow create premium TestBox --git="https://github/FriendCode/codenow-docs.git"
+$ codenow create premium TestBox --git="https://github/FriendCode/codenow.git"
 ```
 
 ## Using the REST API
