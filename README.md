@@ -124,6 +124,15 @@ $ curl -X GET https://codenow.io/api/box/<box>/events \
    -H "Authorization: <your api token>"
 ```
 
+#### Activity data
+
+Get box activity:
+
+```
+$ curl -X GET https://codenow.io/api/box/<box>/activity \
+   -H "Authorization: <your api token>"
+```
+
 
 ## Using the node.js library
 
