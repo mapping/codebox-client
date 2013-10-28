@@ -1,8 +1,8 @@
 {
     "author": "FriendCode",
-    "name": "hr.js",
+    "name": "codenow",
     "description": "Command line tool for CodeNow (codenow.io).",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": [
         "codenow", "dev", "cloud"
     ],
