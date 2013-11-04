@@ -5,18 +5,18 @@ var _ = require('underscore');
 var path = require('path');
 var cli = require('commander');
 var pkg = require('../package.json');
-var CodeNow = require('../index.js').Client;
+var Codebox = require('../index.js').Client;
 
 // Settings
 var settings = require('cat-settings').loadSync(__dirname + '/../settings.json');
 var defaultSettings = {
     'token': '',
-    'host': 'http://codenow.io'
+    'host': 'https://api.codebox.io'
 };
 _.defaults(settings, defaultSettings);
 
 // Client
-var client = new CodeNow({
+var client = new Codebox({
     'token': settings.token,
     'host': settings.host
 });
@@ -30,7 +30,7 @@ cli
 .description('configure authentication.')
 .action(function(token) {
     if (!token) {
-        console.log("Need token to authenticate: codenow -h for more infos");
+        console.log("Need token to authenticate: codebox-io -h for more infos");
         return;
     }
     console.log("Authentication will use API token:", token);
@@ -41,9 +41,9 @@ cli
 ////// Define hostname
 cli
 .command('host [hostname]')
-.description('configure CodeNow host.')
+.description('configure Codebox host.')
 .action(function(host) {
-    console.log("CodeNow host is:", host);
+    console.log("Codebox host is:", host);
     settings.host = host;
     settings.saveSync();
 });

@@ -1,11 +1,11 @@
-CodeNow: Getting Started
+Codebox: Getting Started
 ============
 
-Below you'll find tutorials that will teach you how to use CodeNow, and reference documentation for all the moving parts.
+Below you'll find tutorials that will teach you how to use Codebox, and reference documentation for all the moving parts.
 
-Sign up and create an account on CodeNow at http://codenow.io. There are different ways for creating boxes using CodeNow:
+Sign up and create an account on Codebox at https://www.codebox.io. There are different ways for creating boxes using Codebox:
 
-* Using your dashboard at http://codenow.io
+* Using your dashboard at https://www.codebox.io
 * Using the command line tool
 * Using the REST API
 * Using some librairies for Javascript, Python or Ruby
@@ -19,7 +19,7 @@ Each boxes who created use the SSH key of your account, you can add the public k
 
 ## Using the dashboard
 
-It's very simple to create coding environment using the web dashboard. Simply go to http://codenow.io and log in. Click on *"Create a new box"* and follow the instructions.
+It's very simple to create coding environment using the web dashboard. Simply go to https://www.codebox.io and log in. Click on *"Create a new box"* and follow the instructions.
 
 You can also manage your differents boxes and access reports about usage and collaborators.
 
@@ -30,24 +30,24 @@ The dashboard is also use to manage credit.
 Install Node.js and NPM for your system (Mac, Windows or Linux). And install the command lien tool using:
 
 ```
-$ npm install codenow -g
+$ npm install codebox-io -g
 ```
 
 You can now authorize the client using your **API Token**:
 
 ```
-$ codenow auth <your api token>
+$ codebox-io auth <your api token>
 ```
 
 Creating boxes is really easy:
 
 ```
-$ codenow create premium TestBox --git="https://github/FriendCode/codenow.git"
+$ codebox-io create premium TestBox --git="https://github/FriendCode/codebox-client.git"
 ```
 
 ## Using the REST API
 
-CodeNow is based on a very simple REST API which allow clients to create boxes from any applications.
+Codebox is based on a very simple REST API which allow clients to create boxes from any applications.
 You can also use a wrapper for the API in Python, Javascript or Ruby.
 
 All the API methods use the header *Authorization* for authenticate the user.
@@ -55,7 +55,7 @@ All the API methods use the header *Authorization* for authenticate the user.
 #### Create a new box
 
 ```
-$ curl -X POST https://codenow.io/api/boxes \
+$ curl -X POST https://api.codebox.io/api/boxes \
    -H "Authorization: <your api token>" \
    -d "name=Test" \
    -d "type=premium"
@@ -70,7 +70,7 @@ Optional paramters are:
 #### List Boxes
 
 ```
-$ curl -X GET https://codenow.io/api/boxes \
+$ curl -X GET https://api.codebox.io/api/boxes \
    -H "Authorization: <your api token>"
 ```
 
@@ -79,14 +79,14 @@ $ curl -X GET https://codenow.io/api/boxes \
 Get the list of collaborators emails:
 
 ```
-$ curl -X GET https://codenow.io/api/box/<box>/collaborators \
+$ curl -X GET https://api.codebox.io/api/box/<box>/collaborators \
    -H "Authorization: <your api token>"
 ```
 
 Add a collaborator by email:
 
 ```
-$ curl -X POST https://codenow.io/api/box/<box>/collaborators \
+$ curl -X POST https://api.codebox.io/api/box/<box>/collaborators \
    -H "Authorization: <your api token>" \
    -d "email=youremail@mymail.com"
 ```
@@ -94,7 +94,7 @@ $ curl -X POST https://codenow.io/api/box/<box>/collaborators \
 Remove a collaborator by email:
 
 ```
-$ curl -X DELETE https://codenow.io/api/box/<box>/collaborators \
+$ curl -X DELETE https://api.codebox.io/api/box/<box>/collaborators \
    -H "Authorization: <your api token>" \
    -d "email=youremail@mymail.com"
 ```
@@ -104,14 +104,14 @@ $ curl -X DELETE https://codenow.io/api/box/<box>/collaborators \
 Get the information about a box:
 
 ```
-$ curl -X GET https://codenow.io/api/box/<box> \
+$ curl -X GET https://api.codebox.io/api/box/<box> \
    -H "Authorization: <your api token>"
 ```
 
 Remove a box:
 
 ```
-$ curl -X DELETE https://codenow.io/api/box/<box> \
+$ curl -X DELETE https://api.codebox.io/api/box/<box> \
    -H "Authorization: <your api token>"
 ```
 
@@ -120,7 +120,7 @@ $ curl -X DELETE https://codenow.io/api/box/<box> \
 List events for a boxes:
 
 ```
-$ curl -X GET https://codenow.io/api/box/<box>/events \
+$ curl -X GET https://api.codebox.io/api/box/<box>/events \
    -H "Authorization: <your api token>"
 ```
 
@@ -129,7 +129,7 @@ $ curl -X GET https://codenow.io/api/box/<box>/events \
 Get box activity:
 
 ```
-$ curl -X GET https://codenow.io/api/box/<box>/activity \
+$ curl -X GET https://api.codebox.io/api/box/<box>/activity \
    -H "Authorization: <your api token>"
 ```
 
@@ -139,9 +139,9 @@ $ curl -X GET https://codenow.io/api/box/<box>/activity \
 Create a client:
 
 ```
-var CodeNow = require("codenow").Client;
+var Codebox = require("codebox-io").Client;
 
-var client = new CodeNow({
+var client = new Codebox({
 	'token': "<api token>"
 });
 ```
