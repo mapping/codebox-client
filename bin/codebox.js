@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 
-// Requries
+// Requires
+var Q = require('Q');
 var _ = require('underscore');
+var fs  =  require('fs');
 var path = require('path');
 var cli = require('commander');
 var pkg = require('../package.json');
+var exec = require('child_process').exec;
 var Codebox = require('../index.js').Client;
 
 // Settings
@@ -15,12 +18,39 @@ var defaultSettings = {
 };
 _.defaults(settings, defaultSettings);
 
+// Return package info for addons
+var getPackage = function(directory) {
+    var git, packagePath, packageInfos;
+    packagePath = path.join(directory, "package.json");
+    
+    // Check directory is a git repository
+    return Q.nfcall(exec, "cd "+directory+" && git config --get remote.origin.url").then(function(output) {
+        git = output.join("").replace(/(\r\n|\n|\r)/gm, "");
+        
+        // Check package.json exists
+        if (!fs.existsSync(packagePath)) {
+            return Q.reject(new Error("package.json not found"));
+        } else {
+            return Q();
+        }
+    }).then(function() {
+        // Read package.json
+        return Q.nfcall(fs.readFile, packagePath, 'utf8');
+    }).then(function(output) {
+        packageInfos = JSON.parse(output);
+        return Q({
+            'git': git,
+            'package': packageInfos
+        })
+    });
+};
+
 // Client
 var client = new Codebox({
     'token': settings.token,
     'host': settings.host
 });
-client.on("error", function(err, body) {
+client.on("apierror", function(err, body) {
     console.log("error: ", body);
 });
 
@@ -91,6 +121,37 @@ cli
         console.log(box.name, "|", box.url);
     });
 });
+
+////// Publish an addon
+cli
+.command('publish [directory]')
+.description('Publish an addon.')
+.action(function(directory) {
+    directory = path.resolve(directory || "./");
+    getPackage(directory).then(function(packageInfos) {
+        return client.publishAddon(packageInfos);
+    }).then(function(addon) {
+        console.log("published", addon.name, ":", addon["package"]["version"]);
+    }, function(err) {
+        console.log("error publishing addon:", err);
+    })
+});
+
+////// Unpublish an addon
+cli
+.command('unpublish [directory]')
+.description('Unpublish an addon.')
+.action(function(directory) {
+    directory = path.resolve(directory || "./");
+    getPackage(directory).then(function(packageInfos) {
+        return client.unpublishAddon(packageInfos["package"].name);
+    }).then(function(addon) {
+        console.log("Unpublished addon from", directory);
+    }, function(err) {
+        console.log("error publishing addon:", err);
+    })
+});
+
 
 cli.option('-g, --git <git url>', 'GIT url for a new box.');
 cli.option('-l, --label <Description Label>', 'Description for a new box.');
