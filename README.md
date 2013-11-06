@@ -174,3 +174,17 @@ client.box("7546736a-621d-434f-9c10-ad7cd0773a06").then(function(box) {
 	console.log(box.id," : ", box.name)
 });
 ```
+
+## Managing addons
+
+You can publish addons to the addons registry using the command line tool:
+
+```
+$ codenow-io publish ./path/to/the/repository
+```
+
+And also unpublish the addon:
+
+```
+$ codenow-io unpublish ./path/to/the/repository
+```
