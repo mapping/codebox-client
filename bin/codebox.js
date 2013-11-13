@@ -116,6 +116,7 @@ cli
         'name': boxName,
         'type': boxType,
         'git': this.git,
+        'stack': this.stack,
         'description': this.label
     }).then(function(box) {
         console.log(box.name, "|", box.url);
@@ -154,6 +155,7 @@ cli
 
 
 cli.option('-g, --git <git url>', 'GIT url for a new box.');
+cli.option('-s, --stack <stack name>', 'Stack for a new box.');
 cli.option('-l, --label <Description Label>', 'Description for a new box.');
 
 
