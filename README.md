@@ -42,10 +42,10 @@ $ codebox-io auth <your api token>
 Creating boxes is really easy:
 
 ```
-$ codebox-io create premium TestBox --stack="node" --git="https://github/FriendCode/codebox-client.git"
+$ codebox-io create type1 TestBox --stack="node" --git="https://github/FriendCode/codebox-client.git"
 ```
 
-You can learn more about differents stacks in [the documentation](docs/stacks.md).
+You can learn more about differents stacks in [the documentation](docs/stacks.md) and more about [the pricing](https://www.codebox.io).
 
 ## Using the REST API
 
@@ -60,7 +60,7 @@ All the API methods use the header *Authorization* for authenticate the user.
 $ curl -X POST https://api.codebox.io/api/boxes \
    -H "Authorization: <your api token>" \
    -d "name=Test" \
-   -d "type=premium" \
+   -d "type=type1" \
    -d "stack=node"
 ```
 
@@ -153,7 +153,7 @@ Create a box:
 
 ```
 client.create({
-	'type': 'premium',
+	'type': 'type1',
 	'name': 'My Node Box',
    'stack': 'python'
 }).then(function(box) {

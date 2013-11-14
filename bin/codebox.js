@@ -105,7 +105,7 @@ cli
 ////// Create a box
 cli
 .command('create [type] [name]')
-.description('create a new box (type could be premium or free).')
+.description('create a new box (type could be type1 or type2).')
 .action(function(boxType, boxName) {
     if (!boxType || !boxName) {
         console.log("Need 'name' and 'type' to create a box");
