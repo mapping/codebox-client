@@ -1,4 +1,4 @@
-# Accounts
+## Accounts
 
 Codebox lets you connect accounts from GitHub, Bitbucket and Assembla.
 
