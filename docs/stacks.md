@@ -50,6 +50,8 @@ Content of [Base stack](#base-stack) +
 
 | Name | Version |
 | ----- | ------------------- |
+| openjdk-7-jdk | |
+| openjdk-7-jre-headless | |
 
 ### go
 
