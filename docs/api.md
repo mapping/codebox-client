@@ -129,3 +129,7 @@ client.box("7546736a-621d-434f-9c10-ad7cd0773a06").then(function(box) {
 	console.log(box.id," : ", box.name)
 });
 ```
+
+## Others librairies
+
+* [Erlang](https://github.com/mawuli-ypa/codebox-erlang)
