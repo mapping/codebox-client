@@ -20,7 +20,7 @@ _.defaults(settings, defaultSettings);
 
 // Return package info for addons
 var getPackage = function(directory) {
-    var git, packagePath, packageInfos;
+    var git, gitRef, packagePath, packageInfos;
     packagePath = path.join(directory, "package.json");
     
     // Check directory is a git repository
@@ -34,14 +34,19 @@ var getPackage = function(directory) {
             return Q();
         }
     }).then(function() {
+        // Read current commit
+        return Q.nfcall(exec, "cd "+directory+" && git rev-parse HEAD").then(function(output) {
+            gitRef = output.join("").replace(/(\r\n|\n|\r)/gm, "");
+        });
+    }).then(function() {
         // Read package.json
         return Q.nfcall(fs.readFile, packagePath, 'utf8');
     }).then(function(output) {
         packageInfos = JSON.parse(output);
         return Q({
-            'git': git,
+            'git': git+"#"+gitRef,
             'package': packageInfos
-        })
+        });
     });
 };
 
