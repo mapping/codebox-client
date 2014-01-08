@@ -21,6 +21,7 @@ This document group all the informations about the differents stacks and the too
 | php | 5 |
 | gcc | latest |
 | g++ | latest |
+| openssh-server | latest |
 
 ### python
 
@@ -73,6 +74,8 @@ Content of [Base stack](#base-stack) +
 
 | Name | Version |
 | ----- | ------------------- |
+| clang | latest |
+| clang++ | latest |
 
 ### dart
 
@@ -81,3 +84,12 @@ Content of [Base stack](#base-stack) +
 | Name | Version |
 | ----- | ------------------- |
 | dartsdk | latest |
+
+### lua
+
+Content of [Base stack](#base-stack) +
+
+| Name | Version |
+| ----- | ------------------- |
+| luajit | latest |
+| luvit | 0.7.0 |
