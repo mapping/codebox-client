@@ -51,8 +51,8 @@ Content of [Base stack](#base-stack) +
 
 | Name | Version |
 | ----- | ------------------- |
-| openjdk-7-jdk | |
-| openjdk-7-jre-headless | |
+| openjdk-7-jdk | latest |
+| openjdk-7-jre-headless | latest |
 
 ### go
 
