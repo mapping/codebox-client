@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Requires
-var Q = require('Q');
+var Q = require('q');
 var _ = require('underscore');
 var fs  =  require('fs');
 var path = require('path');
