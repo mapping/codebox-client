@@ -101,7 +101,7 @@ $ curl -X GET https://api.codebox.io/api/box/<box>/activity \
 
 Create a client:
 
-```
+```javascript
 var Codebox = require("codebox-io").Client;
 
 var client = new Codebox({
@@ -111,7 +111,7 @@ var client = new Codebox({
 
 Create a box:
 
-```
+```javascript
 client.create({
 	'type': 'type1',
 	'name': 'My Node Box',
@@ -123,7 +123,7 @@ client.create({
 
 List boxes:
 
-```
+```javascript
 client.boxes().then(function(boxes) {
 	boxes.forEach(function(box) {
 		console.log(box.id," : ", box.name)
@@ -133,9 +133,19 @@ client.boxes().then(function(boxes) {
 
 Get a box by its id:
 
-```
+```javascript
 client.box("7546736a-621d-434f-9c10-ad7cd0773a06").then(function(box) {
 	console.log(box.id," : ", box.name)
+});
+```
+
+Download box content:
+
+```javascript
+box.content("./test.gz").then(function() {
+    console.log("End!");
+}, function(err) {
+    console.log("Error:", err);
 });
 ```
 
