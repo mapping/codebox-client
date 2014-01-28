@@ -69,6 +69,15 @@ $ curl -X DELETE https://api.codebox.io/api/box/<box> \
    -H "Authorization: <your api token>"
 ```
 
+#### Content
+
+Download content as a tar.gz file with a stream on:
+
+```
+$ curl -O https://api.codebox.io/api/box/<box>/content \
+   -H "Authorization: <your api token>"
+```
+
 #### Events
 
 List events for a boxes:
