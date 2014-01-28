@@ -61,6 +61,16 @@ client.on("apierror", function(err, body) {
 
 ////// Define auth token
 cli
+.command('whoami')
+.description('display current authentication.')
+.action(function() {
+    console.log("Client currently use:");
+    console.log("\tHost: %s", client.config.host);
+    console.log("\tToken: %s", client.config.token);
+});
+
+////// Define auth token
+cli
 .command('auth [token]')
 .description('configure authentication.')
 .action(function(token) {
@@ -104,6 +114,33 @@ cli
         boxes.forEach(function(box) {
             console.log(box.name, "|", box.url)
         })
+    });
+});
+
+////// Download a box
+cli
+.command('download [id] [output]')
+.description('download a box content.')
+.action(function(boxId, output) {
+    if (!boxId) {
+        console.log("Need boxId to download content: codebox-io -h for more infos");
+        return;
+    }
+    if (!output) {
+        console.log("Need file path to downlaod content: codebox-io -h for more infos");
+        return;
+    }
+
+    client.box(boxId).then(function(box) {
+        console.log("Start Downloading %s...", box.name);
+        console.log(" In file %s", output);
+        return box.content(output);
+    }).then(function() {
+        console.log("\nEnd, content is in %s", output);
+    }, function(err) {
+        console.log("\nError:", err);
+    }, function(n) {
+        console.log('\t-> got %d bytes of data', n);
     });
 });
 
