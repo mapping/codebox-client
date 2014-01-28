@@ -45,7 +45,7 @@ Creating boxes is really easy:
 $ codebox-io create type1 TestBox --stack="node" --git="https://github/FriendCode/codebox-client.git"
 ```
 
-Downlaod a box content
+Download a box content
 
 ```
 $ codebox-io download 57f06d2e-05d6-4745-b9f4-6b0c9ef417c8 ./content.gz
